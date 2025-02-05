@@ -1,6 +1,5 @@
 package br.com.matheusjuan.todolist.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,28 +8,35 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val LightColorScheme = lightColorScheme(
+    primary = BlueBase,
+    onPrimary = Color.White,
+    secondary = YellowBase,
+    onSecondary = Color.White,
+    tertiary = RedBase,
+    background = Gray100,
+    onBackground = Gray600,
+    surface = Gray100,
+    onSurface = Gray600,
+    error = RedBase,
+    onError = Color.White
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColorScheme = darkColorScheme(
+    primary = BlueLight,
+    onPrimary = Color.Black,
+    secondary = YellowLight,
+    onSecondary = Color.Black,
+    tertiary = RedLight,
+    background = Gray600,
+    onBackground = Gray100,
+    surface = Gray600,
+    onSurface = Gray200,
+    error = RedBase,
+    onError = Color.Black
 )
 
 @Composable
