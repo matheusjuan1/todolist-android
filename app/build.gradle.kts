@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "br.com.matheusjuan.todolist"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "br.com.matheusjuan.todolist"
