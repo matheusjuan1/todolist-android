@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">To-Do List</string>
+
+    <string name="confirm">Confirmar</string>
+
+    <!-- content description  -->
+    <string name="button_icon">Ícone do botão</string>
 </resources>
