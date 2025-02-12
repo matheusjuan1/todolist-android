@@ -17,32 +17,35 @@ import br.com.matheusjuan.todolist.data.model.Task
 import br.com.matheusjuan.todolist.data.model.mock.mockTasks
 import br.com.matheusjuan.todolist.ui.component.checkbox.TodoCheckbox
 import br.com.matheusjuan.todolist.ui.theme.Gray100
-import br.com.matheusjuan.todolist.ui.theme.Gray300
+import br.com.matheusjuan.todolist.ui.theme.Gray200
+import br.com.matheusjuan.todolist.ui.theme.Gray400
+import br.com.matheusjuan.todolist.ui.theme.Gray600
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
 fun TodoTaskItem(
     modifier: Modifier = Modifier,
     task: Task,
-    onClick: () -> Unit,
+    onClick: (Task) -> Unit,
     onCheckedChange: (Boolean) -> Unit
 ) {
     Row(
         modifier = modifier
-            .clickable { onClick() }
-            .background(if (task.done) Gray300 else Gray100)
+            .clickable { onClick(task) }
+            .background(if (task.done) Gray200 else Gray100)
             .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(14.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         TodoCheckbox(
-            modifier = Modifier.scale(1.5f),
+            modifier = Modifier.scale(1.3f),
             checked = task.done,
             onCheckedChange = onCheckedChange
         )
         Text(
             text = task.title,
-            style = Typography.labelMedium
+            style = Typography.bodyMedium,
+            color = if (task.done) Gray400 else Gray600
         )
     }
 }
