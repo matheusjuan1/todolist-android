@@ -14,12 +14,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.ui.theme.BlueBase
+import br.com.matheusjuan.todolist.ui.theme.Gray300
+import br.com.matheusjuan.todolist.ui.theme.Gray400
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
@@ -27,14 +30,19 @@ fun TodoButton(
     modifier: Modifier = Modifier,
     text: String? = null,
     @DrawableRes iconRes: Int? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     Button(
         modifier = modifier.heightIn(min = 56.dp),
         shape = RoundedCornerShape(16.dp),
-        contentPadding = if (text == null && iconRes != null) PaddingValues(0.dp) else ButtonDefaults.ContentPadding,
+        enabled = enabled,
+        contentPadding =
+        if (text == null && iconRes != null) PaddingValues(0.dp)
+        else ButtonDefaults.ContentPadding,
         colors = ButtonDefaults.buttonColors(
-            containerColor = BlueBase
+            containerColor = BlueBase,
+            disabledContainerColor = Gray300
         ),
         onClick = onClick
     ) {
@@ -49,7 +57,11 @@ fun TodoButton(
                 )
             }
             text?.let {
-                Text(text = text, style = Typography.labelLarge)
+                Text(
+                    text = text,
+                    style = Typography.labelLarge,
+                    color = if (enabled) Color.White else Gray400
+                )
             }
         }
     }
@@ -60,14 +72,18 @@ fun TodoButton(
 private fun TodoButtonPreview() {
     TodoButton(
         modifier = Modifier.fillMaxWidth(),
-        text = stringResource(R.string.confirm)
+        text = stringResource(R.string.confirm),
+        iconRes = R.drawable.ic_circle_check
     ) { }
 }
 
 @Preview
 @Composable
 private fun TodoButtonNoIconPreview() {
-
+    TodoButton(
+        modifier = Modifier.fillMaxWidth(),
+        text = stringResource(R.string.confirm)
+    ) { }
 }
 
 @Preview
@@ -75,6 +91,16 @@ private fun TodoButtonNoIconPreview() {
 private fun TodoButtonNoTextPreview() {
     TodoButton(
         modifier = Modifier.fillMaxWidth(),
-        text = stringResource(R.string.confirm)
+        iconRes = R.drawable.ic_circle_check
+    ) { }
+}
+
+@Preview
+@Composable
+private fun TodoButtonDisabledPreview() {
+    TodoButton(
+        modifier = Modifier.fillMaxWidth(),
+        text = stringResource(R.string.confirm),
+        enabled = false
     ) { }
 }
