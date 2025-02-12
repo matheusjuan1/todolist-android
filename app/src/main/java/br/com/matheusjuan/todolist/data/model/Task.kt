@@ -10,6 +10,7 @@ data class Task(
     val startAt: String,
     val endAt: String,
     val priority: Int,
+    val done: Boolean,
     val idUser: String,
     val createdAt: String,
     val version: Int
