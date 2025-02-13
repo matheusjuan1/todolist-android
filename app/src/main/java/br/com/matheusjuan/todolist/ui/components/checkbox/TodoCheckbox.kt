@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.ui.component.checkbox
+package br.com.matheusjuan.todolist.ui.components.checkbox
 
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
