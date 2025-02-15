@@ -5,4 +5,5 @@
 
     <!-- content description  -->
     <string name="button_icon">Ícone do botão</string>
+    <string name="app_logo">App logo</string>
 </resources>
