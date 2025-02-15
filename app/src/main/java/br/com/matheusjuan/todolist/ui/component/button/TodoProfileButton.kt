@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.matheusjuan.todolist.ui.theme.Gray400
+import br.com.matheusjuan.todolist.ui.theme.Gray300
 import br.com.matheusjuan.todolist.ui.theme.Gray600
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
@@ -29,7 +29,7 @@ fun TodoProfileButton(
         shape = CircleShape,
         contentPadding = PaddingValues(0.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Gray400
+            containerColor = Gray300
         )
     ) {
         Text(
