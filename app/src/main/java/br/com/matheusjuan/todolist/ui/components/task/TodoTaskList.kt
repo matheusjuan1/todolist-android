@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.ui.component.task
+package br.com.matheusjuan.todolist.ui.components.task
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

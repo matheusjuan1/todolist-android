@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.ui.component.task
+package br.com.matheusjuan.todolist.ui.components.task
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.data.model.Task
 import br.com.matheusjuan.todolist.data.model.mock.mockTasks
-import br.com.matheusjuan.todolist.ui.component.checkbox.TodoCheckbox
+import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
 import br.com.matheusjuan.todolist.ui.theme.Gray100
 import br.com.matheusjuan.todolist.ui.theme.Gray200
 import br.com.matheusjuan.todolist.ui.theme.Gray400

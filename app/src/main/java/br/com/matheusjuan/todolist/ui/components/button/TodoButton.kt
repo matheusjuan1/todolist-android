@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.ui.component.button
+package br.com.matheusjuan.todolist.ui.components.button
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement

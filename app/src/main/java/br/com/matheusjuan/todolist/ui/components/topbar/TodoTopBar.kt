@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.ui.component.topbar
+package br.com.matheusjuan.todolist.ui.components.topbar
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
-import br.com.matheusjuan.todolist.ui.component.button.TodoProfileButton
+import br.com.matheusjuan.todolist.ui.components.button.TodoProfileButton
 import br.com.matheusjuan.todolist.ui.theme.BlueBase
 import br.com.matheusjuan.todolist.ui.theme.Gray100
 
