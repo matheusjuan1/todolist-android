@@ -15,7 +15,11 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
         startDestination = Splash
     ) {
         composable<Splash> {
-            SplashScreen()
+            SplashScreen(
+                onNavigateToNextScreen = {
+                    navController.navigate(Home)
+                }
+            )
         }
 
         composable<Home> {

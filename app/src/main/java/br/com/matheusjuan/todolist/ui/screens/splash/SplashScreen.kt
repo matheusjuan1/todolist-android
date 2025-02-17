@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,9 +17,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.ui.theme.BlueBase
+import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(modifier: Modifier = Modifier) {
+fun SplashScreen(
+    modifier: Modifier = Modifier,
+    onNavigateToNextScreen: () -> Unit
+) {
+    LaunchedEffect(key1 = Unit) {
+        delay(2_000)
+        onNavigateToNextScreen()
+    }
+
     Box(
         modifier = modifier
             .background(BlueBase)
@@ -47,5 +57,5 @@ fun SplashScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun SplashScreenPreview() {
-    SplashScreen()
+    SplashScreen() { }
 }
