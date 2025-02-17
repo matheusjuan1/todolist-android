@@ -33,12 +33,12 @@ fun TodoTaskItem(
         modifier = modifier
             .clickable { onClick(task) }
             .background(if (task.done) Gray200 else Gray100)
-            .padding(8.dp),
+            .padding(vertical = 5.dp, horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         TodoCheckbox(
-            modifier = Modifier.scale(1.3f),
+            modifier = Modifier.scale(1.1f),
             checked = task.done,
             onCheckedChange = onCheckedChange
         )

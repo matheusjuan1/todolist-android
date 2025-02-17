@@ -27,15 +27,20 @@ fun TodoCircleButton(
     modifier: Modifier = Modifier,
     @DrawableRes iconRes: Int? = null,
     text: String? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     Button(
         modifier = modifier.size(30.dp),
         onClick = onClick,
         shape = CircleShape,
+        enabled = enabled,
         contentPadding = PaddingValues(if (text == null && iconRes != null) 6.dp else 0.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Gray300
+            containerColor = Gray300,
+            disabledContainerColor = Gray300.copy(alpha = 0.2f),
+            contentColor = if (enabled) Gray600 else Gray600.copy(alpha = 0.4f)
+
         )
     ) {
         Row(
@@ -45,15 +50,13 @@ fun TodoCircleButton(
             iconRes?.let {
                 Icon(
                     painter = painterResource(id = iconRes),
-                    contentDescription = stringResource(id = R.string.button_icon),
-                    tint = Gray600
+                    contentDescription = stringResource(id = R.string.button_icon)
                 )
             }
             text?.let {
                 Text(
                     text = text,
-                    style = Typography.headlineLarge,
-                    color = Gray600
+                    style = Typography.headlineLarge
                 )
             }
         }
@@ -74,4 +77,13 @@ private fun TodoCircleButtonTextPreview() {
     TodoCircleButton(
         text = "+"
     ) { }
+}
+
+@Preview
+@Composable
+private fun TodoCircleButtonDisabledPreview() {
+    TodoCircleButton(
+        iconRes = R.drawable.ic_trash,
+        enabled = false
+    ) {  }
 }
