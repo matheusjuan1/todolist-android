@@ -6,4 +6,5 @@
     <!-- content description  -->
     <string name="button_icon">Ícone do botão</string>
     <string name="app_logo">App logo</string>
+    <string name="logo_mj">MJ logo</string>
 </resources>
