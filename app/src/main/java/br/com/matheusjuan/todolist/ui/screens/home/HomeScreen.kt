@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,13 +25,17 @@ import br.com.matheusjuan.todolist.ui.theme.Gray400
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
+) {
 
     val tasks: List<Task> = mockTasks
 
     Box(
         modifier = modifier
             .fillMaxSize()
+            .padding(paddingValues)
             .background(color = Color.White)
     ) {
         Column {
@@ -94,5 +99,5 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun HomeScreenListPreview() {
-    HomeScreen()
+    HomeScreen(paddingValues = PaddingValues())
 }

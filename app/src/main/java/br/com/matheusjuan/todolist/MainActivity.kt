@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.matheusjuan.todolist.routes.AppNavigation
@@ -21,10 +22,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             ToDoListTheme {
                 val navController = rememberNavController()
-                val currentBackStackEntry = navController.currentBackStackEntryAsState()
+                val backStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = backStackEntry?.destination?.route
 
                 // Define se o TopBar deve ser mostrado
-                val showTopBar = when (currentBackStackEntry.value?.destination?.route) {
+                val showTopBar = when (currentRoute) {
                     Home.toString() -> true
                     else -> false
                 }
@@ -35,8 +37,11 @@ class MainActivity : ComponentActivity() {
                             TodoTopBar { }
                         }
                     }
-                ) { _ ->
-                    AppNavigation(navController)
+                ) { paddingValues ->
+                    AppNavigation(
+                        navController = navController,
+                        paddingValues = paddingValues
+                    )
                 }
             }
         }
