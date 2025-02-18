@@ -38,7 +38,7 @@ fun SplashScreen(
             modifier = Modifier
                 .align(Alignment.Center)
                 .size(90.dp),
-            painter = painterResource(id = R.drawable.ic_circle_check),
+            painter = painterResource(id = R.drawable.logo_todo),
             contentDescription = stringResource(id = R.string.app_logo),
             tint = Color.White
         )
@@ -46,7 +46,7 @@ fun SplashScreen(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 50.dp)
-                .size(54.dp),
+                .size(48.dp),
             painter = painterResource(id = R.drawable.logo_mj),
             tint = Color.White,
             contentDescription = stringResource(id = R.string.logo_mj)
@@ -57,5 +57,5 @@ fun SplashScreen(
 @Preview
 @Composable
 private fun SplashScreenPreview() {
-    SplashScreen() { }
+    SplashScreen { }
 }
