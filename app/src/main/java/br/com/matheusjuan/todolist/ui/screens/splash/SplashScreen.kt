@@ -2,6 +2,7 @@ package br.com.matheusjuan.todolist.ui.screens.splash
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,6 +23,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(
     modifier: Modifier = Modifier,
+    paddingValues: PaddingValues,
     onNavigateToNextScreen: () -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
@@ -33,20 +35,21 @@ fun SplashScreen(
         modifier = modifier
             .background(BlueBase)
             .fillMaxSize()
+            .padding(paddingValues)
     ) {
         Icon(
             modifier = Modifier
                 .align(Alignment.Center)
-                .size(90.dp),
-            painter = painterResource(id = R.drawable.ic_circle_check),
+                .size(110.dp),
+            painter = painterResource(id = R.drawable.logo_todo),
             contentDescription = stringResource(id = R.string.app_logo),
             tint = Color.White
         )
         Icon(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 50.dp)
-                .size(54.dp),
+                .padding(bottom = 38.dp)
+                .size(48.dp),
             painter = painterResource(id = R.drawable.logo_mj),
             tint = Color.White,
             contentDescription = stringResource(id = R.string.logo_mj)
@@ -57,5 +60,5 @@ fun SplashScreen(
 @Preview
 @Composable
 private fun SplashScreenPreview() {
-    SplashScreen() { }
+    SplashScreen(paddingValues = PaddingValues()) { }
 }

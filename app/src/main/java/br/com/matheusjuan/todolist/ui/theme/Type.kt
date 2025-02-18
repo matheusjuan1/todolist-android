@@ -15,60 +15,58 @@ val poppinsFontFamily = FontFamily(
     Font(R.font.poppins_bold, FontWeight.Bold)
 )
 
-private const val activatePreview = true
-
 val Typography = Typography(
     // Title Xl"
     headlineLarge = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp
     ),
     // "Title Lg"
     headlineMedium = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
     ),
     // "Title Md"
     headlineSmall = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp
     ),
     // "Title Sm"
     titleLarge = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp
     ),
     // "Text Md"
     bodyLarge = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),
     // "Text Sm"
     bodyMedium = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
     // "Text Xs"
     bodySmall = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
     ),
     // "Action"
     labelLarge = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp
     ),
     // "Subtitle"
     labelMedium = TextStyle(
-        fontFamily = if (activatePreview) FontFamily.Default else poppinsFontFamily,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp
     )

@@ -1,6 +1,7 @@
 package br.com.matheusjuan.todolist.ui.components.topbar
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.TopAppBar
@@ -26,7 +27,8 @@ fun TodoTopBar(
         modifier = Modifier.shadow(elevation = 4.dp),
         title = {
             Icon(
-                painter = painterResource(id = R.drawable.ic_circle_check),
+                modifier = Modifier.size(36.dp),
+                painter = painterResource(id = R.drawable.logo_todo),
                 contentDescription = stringResource(R.string.app_logo),
             )
         },
