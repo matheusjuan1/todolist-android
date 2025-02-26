@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
@@ -90,6 +91,11 @@ fun HeaderList(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             TodoCircleButton(
+                iconRes = R.drawable.ic_search,
+                enabled = false,
+                onClick = onSearch
+            )
+            TodoCircleButton(
                 iconRes = R.drawable.ic_reload,
                 enabled = false,
                 onClick = onReload
@@ -117,7 +123,8 @@ fun TaskList(
                 modifier = Modifier.padding(horizontal = 30.dp),
                 text = "Você não possui tarefas para o dia de hoje",
                 style = Typography.labelMedium,
-                color = Gray400
+                color = Gray400,
+                textAlign = TextAlign.Center
             )
         }
     } else {
@@ -133,4 +140,12 @@ fun TaskList(
 @Composable
 private fun HomeScreenListPreview() {
     HomeScreen(paddingValues = PaddingValues())
+}
+
+@Preview
+@Composable
+private fun TaskListEmptyPreview() {
+    TaskList(
+        tasks = listOf()
+    ) { }
 }
