@@ -21,7 +21,7 @@ fun TodoProfileButton(
     sizeType: Int = 1, // 1 = Small, 2 = Large
     onClick: () -> Unit
 ) {
-    val size = if (sizeType == 1) 34.dp else 64.dp
+    val size = if (sizeType == 1) 32.dp else 64.dp
 
     Button(
         modifier = modifier.size(size),

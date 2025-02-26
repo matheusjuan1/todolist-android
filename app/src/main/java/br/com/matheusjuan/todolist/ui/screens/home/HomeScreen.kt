@@ -39,60 +39,93 @@ fun HomeScreen(
             .background(color = Color.White)
     ) {
         Column {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 12.dp, vertical = 16.dp),
-                horizontalArrangement = Arrangement.Absolute.SpaceBetween
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    TodoCircleButton(
-                        iconRes = R.drawable.ic_arrow_left
-                    ) { }
-                    Text(
-                        text = "Hoje",
-                        style = Typography.headlineSmall
-                    )
-                    TodoCircleButton(
-                        iconRes = R.drawable.ic_arrow_right
-                    ) { }
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    TodoCircleButton(
-                        iconRes = R.drawable.ic_reload,
-                        enabled = false
-                    ) { }
-                    TodoCircleButton(
-                        iconRes = R.drawable.ic_filter,
-                        enabled = false
-                    ) { }
-                }
-            }
-            if (tasks.isEmpty()) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        modifier = Modifier.padding(horizontal = 30.dp),
-                        text = "Você não possui tarefas para o dia de hoje",
-                        style = Typography.labelMedium,
-                        color = Gray400
-                    )
-                }
-            } else {
-                TodoTaskList(
-                    modifier = Modifier.padding(bottom = 12.dp),
-                    tasks = tasks
-                ) { }
-            }
+            HeaderList(
+                onPreviousDay = { },
+                onNextDay = { },
+                onSearch = { },
+                onReload = { },
+                onFilter = { }
+            )
+            TaskList(
+                tasks = tasks,
+                onTaskClick = { }
+            )
         }
+    }
+}
+
+@Composable
+fun HeaderList(
+    onPreviousDay: () -> Unit,
+    onNextDay: () -> Unit,
+    onSearch: () -> Unit,
+    onReload: () -> Unit,
+    onFilter: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 16.dp),
+        horizontalArrangement = Arrangement.Absolute.SpaceBetween
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            TodoCircleButton(
+                iconRes = R.drawable.ic_arrow_left,
+                onClick = onPreviousDay
+            )
+            Text(
+                text = "Hoje",
+                style = Typography.headlineSmall
+            )
+            TodoCircleButton(
+                iconRes = R.drawable.ic_arrow_right,
+                onClick = onNextDay
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            TodoCircleButton(
+                iconRes = R.drawable.ic_reload,
+                enabled = false,
+                onClick = onReload
+            )
+            TodoCircleButton(
+                iconRes = R.drawable.ic_filter,
+                enabled = false,
+                onClick = onFilter
+            )
+        }
+    }
+}
+
+@Composable
+fun TaskList(
+    tasks: List<Task>,
+    onTaskClick: (Task) -> Unit
+) {
+    if (tasks.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                modifier = Modifier.padding(horizontal = 30.dp),
+                text = "Você não possui tarefas para o dia de hoje",
+                style = Typography.labelMedium,
+                color = Gray400
+            )
+        }
+    } else {
+        TodoTaskList(
+            modifier = Modifier.padding(bottom = 12.dp),
+            tasks = tasks,
+            onTaskClick = onTaskClick
+        )
     }
 }
 
