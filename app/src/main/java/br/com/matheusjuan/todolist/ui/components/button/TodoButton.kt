@@ -30,6 +30,7 @@ fun TodoButton(
     modifier: Modifier = Modifier,
     text: String? = null,
     @DrawableRes iconRes: Int? = null,
+    color: Color = BlueBase,
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {
@@ -41,7 +42,7 @@ fun TodoButton(
         if (text == null && iconRes != null) PaddingValues(0.dp)
         else ButtonDefaults.ContentPadding,
         colors = ButtonDefaults.buttonColors(
-            containerColor = BlueBase,
+            containerColor = color,
             disabledContainerColor = Gray300
         ),
         onClick = onClick

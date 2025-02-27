@@ -25,6 +25,10 @@ import br.com.matheusjuan.todolist.data.model.mock.mockTasks
 import br.com.matheusjuan.todolist.ui.components.button.TodoButton
 import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
 import br.com.matheusjuan.todolist.ui.theme.Gray100
+import br.com.matheusjuan.todolist.ui.theme.Gray400
+import br.com.matheusjuan.todolist.ui.theme.Gray600
+import br.com.matheusjuan.todolist.ui.theme.GreenBase
+import br.com.matheusjuan.todolist.ui.theme.RedBase
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
@@ -72,7 +76,7 @@ fun TaskDetail(
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             TodoCheckbox(
                 modifier = Modifier.scale(1.5f),
@@ -99,16 +103,43 @@ fun TaskDetail(
             )
             Text(
                 text = task.description.ifBlank { stringResource(R.string.without_description) },
-                style = Typography.bodyMedium
+                style = Typography.bodyMedium,
+                color = if (task.description.isBlank()) Gray400 else Gray600
             )
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            horizontalArrangement = Arrangement.Absolute.SpaceBetween
         ) {
-            Column {  }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ){
+                Text(
+                    text = stringResource(R.string.start),
+                    style = Typography.titleLarge
+                )
+                Text(
+                    text = task.startAt,
+                    style = Typography.bodySmall
 
-            Column {  }
+                )
+            }
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.end),
+                    style = Typography.titleLarge
+                )
+                Text(
+                    text = task.endAt,
+                    style = Typography.bodySmall
+                )
+            }
         }
     }
 }
@@ -124,6 +155,7 @@ fun TaskButtons(
     ) {
         TodoButton(
             iconRes = R.drawable.ic_pencil,
+            color = GreenBase,
             onClick = onEdit
         )
 
@@ -131,6 +163,7 @@ fun TaskButtons(
 
         TodoButton(
             iconRes = R.drawable.ic_trash,
+            color = RedBase,
             onClick = onDelete
         )
     }
