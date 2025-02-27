@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
@@ -27,7 +28,8 @@ import br.com.matheusjuan.todolist.ui.theme.Typography
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    onTaskClick: (Task) -> Unit
 ) {
 
     val tasks: List<Task> = mockTasks
@@ -46,10 +48,28 @@ fun HomeScreen(
                 onReload = { },
                 onFilter = { }
             )
-            TaskList(
+            if (tasks.isEmpty()) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        modifier = Modifier.padding(horizontal = 30.dp),
+                        text = "Você não possui tarefas para o dia de hoje",
+                        style = Typography.labelMedium,
+                        color = Gray400,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            } else {
+            TodoTaskList(
+                modifier = Modifier.padding(bottom = 12.dp),
                 tasks = tasks,
-                onTaskClick = { }
+                onTaskClick = { selectedTask ->
+                    onTaskClick(selectedTask)
+                }
             )
+        }
         }
     }
 }
@@ -90,6 +110,11 @@ fun HeaderList(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             TodoCircleButton(
+                iconRes = R.drawable.ic_search,
+                enabled = false,
+                onClick = onSearch
+            )
+            TodoCircleButton(
                 iconRes = R.drawable.ic_reload,
                 enabled = false,
                 onClick = onReload
@@ -103,34 +128,11 @@ fun HeaderList(
     }
 }
 
-@Composable
-fun TaskList(
-    tasks: List<Task>,
-    onTaskClick: (Task) -> Unit
-) {
-    if (tasks.isEmpty()) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                modifier = Modifier.padding(horizontal = 30.dp),
-                text = "Você não possui tarefas para o dia de hoje",
-                style = Typography.labelMedium,
-                color = Gray400
-            )
-        }
-    } else {
-        TodoTaskList(
-            modifier = Modifier.padding(bottom = 12.dp),
-            tasks = tasks,
-            onTaskClick = onTaskClick
-        )
-    }
-}
-
 @Preview
 @Composable
 private fun HomeScreenListPreview() {
-    HomeScreen(paddingValues = PaddingValues())
+    HomeScreen(
+        paddingValues = PaddingValues(),
+        onTaskClick = { }
+    )
 }

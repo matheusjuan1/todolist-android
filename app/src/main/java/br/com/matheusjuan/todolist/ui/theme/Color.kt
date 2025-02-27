@@ -6,6 +6,8 @@ val BlueLight = Color(0xFF69A3F1)
 val BlueBase = Color(0xFF2F80ED)
 val BlueDark = Color(0xFF0A4088)
 
+val GreenBase = Color(0xFF257F49)
+
 val YellowLight = Color(0xFFFBF9CE)
 val YellowBase = Color(0xFFECE74E)
 

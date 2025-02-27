@@ -10,4 +10,9 @@
 
 
     <string name="add">Adicionar</string>
+    <string name="task">Tarefa</string>
+    <string name="description">Descrição</string>
+    <string name="without_description">Sem descrição</string>
+    <string name="start">Início</string>
+    <string name="end">Término</string>
 </resources>
