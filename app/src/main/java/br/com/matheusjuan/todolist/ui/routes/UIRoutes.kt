@@ -1,4 +1,4 @@
-package br.com.matheusjuan.todolist.routes
+package br.com.matheusjuan.todolist.ui.routes
 
 import kotlinx.serialization.Serializable
 

@@ -28,7 +28,8 @@ import br.com.matheusjuan.todolist.ui.theme.Typography
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    onTaskClick: (Task) -> Unit
 ) {
 
     val tasks: List<Task> = mockTasks
@@ -47,10 +48,28 @@ fun HomeScreen(
                 onReload = { },
                 onFilter = { }
             )
-            TaskList(
+            if (tasks.isEmpty()) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        modifier = Modifier.padding(horizontal = 30.dp),
+                        text = "Você não possui tarefas para o dia de hoje",
+                        style = Typography.labelMedium,
+                        color = Gray400,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            } else {
+            TodoTaskList(
+                modifier = Modifier.padding(bottom = 12.dp),
                 tasks = tasks,
-                onTaskClick = { }
+                onTaskClick = { selectedTask ->
+                    onTaskClick(selectedTask)
+                }
             )
+        }
         }
     }
 }
@@ -109,43 +128,11 @@ fun HeaderList(
     }
 }
 
-@Composable
-fun TaskList(
-    tasks: List<Task>,
-    onTaskClick: (Task) -> Unit
-) {
-    if (tasks.isEmpty()) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                modifier = Modifier.padding(horizontal = 30.dp),
-                text = "Você não possui tarefas para o dia de hoje",
-                style = Typography.labelMedium,
-                color = Gray400,
-                textAlign = TextAlign.Center
-            )
-        }
-    } else {
-        TodoTaskList(
-            modifier = Modifier.padding(bottom = 12.dp),
-            tasks = tasks,
-            onTaskClick = onTaskClick
-        )
-    }
-}
-
 @Preview
 @Composable
 private fun HomeScreenListPreview() {
-    HomeScreen(paddingValues = PaddingValues())
-}
-
-@Preview
-@Composable
-private fun TaskListEmptyPreview() {
-    TaskList(
-        tasks = listOf()
-    ) { }
+    HomeScreen(
+        paddingValues = PaddingValues(),
+        onTaskClick = { }
+    )
 }

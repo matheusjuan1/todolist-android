@@ -25,7 +25,7 @@ import br.com.matheusjuan.todolist.data.model.mock.mockTasks
 import br.com.matheusjuan.todolist.ui.components.button.TodoButton
 import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
 import br.com.matheusjuan.todolist.ui.theme.Gray100
-import br.com.matheusjuan.todolist.ui.theme.Gray400
+import br.com.matheusjuan.todolist.ui.theme.Gray300
 import br.com.matheusjuan.todolist.ui.theme.Gray600
 import br.com.matheusjuan.todolist.ui.theme.GreenBase
 import br.com.matheusjuan.todolist.ui.theme.RedBase
@@ -104,7 +104,7 @@ fun TaskDetail(
             Text(
                 text = task.description.ifBlank { stringResource(R.string.without_description) },
                 style = Typography.bodyMedium,
-                color = if (task.description.isBlank()) Gray400 else Gray600
+                color = if (task.description.isBlank()) Gray300 else Gray600
             )
         }
 

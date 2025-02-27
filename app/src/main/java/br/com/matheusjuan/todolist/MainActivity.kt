@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import br.com.matheusjuan.todolist.routes.AppNavigation
+import br.com.matheusjuan.todolist.ui.routes.AppNavigation
 import br.com.matheusjuan.todolist.ui.theme.ToDoListTheme
 
 class MainActivity : ComponentActivity() {

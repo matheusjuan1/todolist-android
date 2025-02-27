@@ -28,7 +28,9 @@ fun TodoTaskList(
                 TodoTaskItem(
                     modifier = Modifier.fillMaxWidth(),
                     task = task,
-                    onClick = onTaskClick,
+                    onClick = {
+                        onTaskClick(task)
+                    },
                     onCheckedChange = { }
                 )
 
