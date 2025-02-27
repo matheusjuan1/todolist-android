@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.data.model.Task
 import br.com.matheusjuan.todolist.data.model.mock.mockTasks
@@ -26,10 +27,11 @@ import br.com.matheusjuan.todolist.ui.components.button.TodoButton
 import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
 import br.com.matheusjuan.todolist.ui.theme.Gray100
 import br.com.matheusjuan.todolist.ui.theme.Gray300
-import br.com.matheusjuan.todolist.ui.theme.Gray600
+import br.com.matheusjuan.todolist.ui.theme.Gray500
 import br.com.matheusjuan.todolist.ui.theme.GreenBase
 import br.com.matheusjuan.todolist.ui.theme.RedBase
 import br.com.matheusjuan.todolist.ui.theme.Typography
+import br.com.matheusjuan.todolist.ui.util.formatServiceDateTime
 
 @Composable
 fun TaskDetailScreen(
@@ -104,7 +106,7 @@ fun TaskDetail(
             Text(
                 text = task.description.ifBlank { stringResource(R.string.without_description) },
                 style = Typography.bodyMedium,
-                color = if (task.description.isBlank()) Gray300 else Gray600
+                color = if (task.description.isBlank()) Gray300 else Gray500
             )
         }
 
@@ -116,14 +118,15 @@ fun TaskDetail(
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
-            ){
+            ) {
                 Text(
                     text = stringResource(R.string.start),
                     style = Typography.titleLarge
                 )
                 Text(
-                    text = task.startAt,
-                    style = Typography.bodySmall
+                    text = task.startAt.formatServiceDateTime(),
+                    style = Typography.bodySmall,
+                    color = Gray500
 
                 )
             }
@@ -136,11 +139,19 @@ fun TaskDetail(
                     style = Typography.titleLarge
                 )
                 Text(
-                    text = task.endAt,
-                    style = Typography.bodySmall
+                    text = task.endAt.formatServiceDateTime(),
+                    style = Typography.bodySmall,
+                    color = Gray500
                 )
             }
         }
+
+        Text(
+            modifier = Modifier.padding(6.dp),
+            text = stringResource(R.string.created_at, task.createdAt.formatServiceDateTime()),
+            style = Typography.bodySmall.copy(fontSize = 10.sp),
+            color = Gray300
+        )
     }
 }
 

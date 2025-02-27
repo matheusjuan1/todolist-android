@@ -15,4 +15,5 @@
     <string name="without_description">Sem descrição</string>
     <string name="start">Início</string>
     <string name="end">Término</string>
+    <string name="created_at">Criado em %1$s</string>
 </resources>
