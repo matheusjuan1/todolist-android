@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.data.model.Task
@@ -45,6 +46,7 @@ fun TodoTaskItem(
         Text(
             modifier = Modifier.weight(1f),
             text = task.title,
+            textDecoration = if (task.done) TextDecoration.LineThrough else TextDecoration.None,
             style = Typography.bodyMedium,
             color = if (task.done) Gray400 else Gray600
         )

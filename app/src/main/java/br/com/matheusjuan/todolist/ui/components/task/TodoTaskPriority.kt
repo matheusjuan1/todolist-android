@@ -32,7 +32,7 @@ fun TodoTaskPriority(
         else -> listOf(priorityColor, Gray300, Gray300)
     }
 
-    val heights = listOf(10.dp, 16.dp, 20.dp)
+    val heights = listOf(10.dp, 13.dp, 16.dp)
 
     Row(
         modifier = modifier,
