@@ -43,9 +43,14 @@ fun TodoTaskItem(
             onCheckedChange = onCheckedChange
         )
         Text(
+            modifier = Modifier.weight(1f),
             text = task.title,
             style = Typography.bodyMedium,
             color = if (task.done) Gray400 else Gray600
+        )
+        TodoTaskPriority(
+            modifier = Modifier.padding(end = 6.dp),
+            priority = task.priority
         )
     }
 }
