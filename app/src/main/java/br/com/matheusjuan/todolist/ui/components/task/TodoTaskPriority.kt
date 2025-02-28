@@ -10,25 +10,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.ui.theme.Gray300
-import br.com.matheusjuan.todolist.ui.util.getPriorityInfo
+import br.com.matheusjuan.todolist.ui.util.enums.Priority
 
 @Composable
 fun TodoTaskPriority(
     modifier: Modifier = Modifier,
     priority: Int
 ) {
-    val context = LocalContext.current
-
-    val priorityColor = priority.getPriorityInfo(context = context).second
+    val priorityColor = Priority.fromValue(priority).color
 
     val colors = when (priority) {
-        1 -> listOf(priorityColor, Gray300, Gray300)
-        2 -> listOf(priorityColor, priorityColor, Gray300)
-        3 -> listOf(priorityColor, priorityColor, priorityColor)
+        Priority.LOW.value -> listOf(priorityColor, Gray300, Gray300)
+        Priority.MEDIUM.value -> listOf(priorityColor, priorityColor, Gray300)
+        Priority.HIGH.value -> listOf(priorityColor, priorityColor, priorityColor)
         else -> listOf(priorityColor, Gray300, Gray300)
     }
 

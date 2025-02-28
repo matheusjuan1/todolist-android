@@ -41,7 +41,8 @@ fun TodoCircleButton(
             disabledContainerColor = Gray300.copy(alpha = 0.2f),
             contentColor = if (enabled) Gray600 else Gray600.copy(alpha = 0.4f)
 
-        )
+        ),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

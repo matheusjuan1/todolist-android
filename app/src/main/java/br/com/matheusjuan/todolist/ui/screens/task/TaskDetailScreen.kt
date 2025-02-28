@@ -26,6 +26,7 @@ import br.com.matheusjuan.todolist.data.model.Task
 import br.com.matheusjuan.todolist.data.model.mock.mockTasks
 import br.com.matheusjuan.todolist.ui.components.button.TodoButton
 import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
+import br.com.matheusjuan.todolist.ui.components.radiogroup.TodoPriorityRadioGroup
 import br.com.matheusjuan.todolist.ui.theme.Gray300
 import br.com.matheusjuan.todolist.ui.theme.Gray500
 import br.com.matheusjuan.todolist.ui.theme.GreenBase
@@ -144,6 +145,21 @@ fun TaskDetail(
                     color = Gray500
                 )
             }
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.priority),
+                style = Typography.titleLarge
+            )
+            TodoPriorityRadioGroup(
+                selectedPriority = task.priority
+            ) { }
         }
 
         Text(
