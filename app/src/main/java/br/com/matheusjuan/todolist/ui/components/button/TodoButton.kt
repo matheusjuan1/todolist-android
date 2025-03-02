@@ -45,6 +45,7 @@ fun TodoButton(
             containerColor = color,
             disabledContainerColor = Gray300
         ),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp),
         onClick = onClick
     ) {
         Row(

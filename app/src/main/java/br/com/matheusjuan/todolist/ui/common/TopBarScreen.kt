@@ -8,6 +8,7 @@ import br.com.matheusjuan.todolist.ui.components.topbar.TodoTopBar
 
 @Composable
 fun TopBarScreen(
+    onFABClick: () -> Unit,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
@@ -15,7 +16,9 @@ fun TopBarScreen(
             TodoTopBar { }
         },
         floatingActionButton = {
-            TodoFloatingActionButton { }
+            TodoFloatingActionButton(
+                onClick = onFABClick
+            )
         }
     ) { paddingValues ->
         content(paddingValues)
