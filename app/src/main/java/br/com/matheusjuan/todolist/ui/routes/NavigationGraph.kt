@@ -7,11 +7,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import br.com.matheusjuan.todolist.data.model.Task
+import br.com.matheusjuan.todolist.data.model.TaskEdit
 import br.com.matheusjuan.todolist.ui.common.MainScreen
 import br.com.matheusjuan.todolist.ui.common.TopBarScreen
 import br.com.matheusjuan.todolist.ui.screens.home.HomeScreen
 import br.com.matheusjuan.todolist.ui.screens.splash.SplashScreen
+import br.com.matheusjuan.todolist.ui.screens.task.TaskAddScreen
 import br.com.matheusjuan.todolist.ui.screens.task.TaskDetailScreen
+import br.com.matheusjuan.todolist.ui.screens.task.TaskEditScreen
 
 @Composable
 fun AppNavigation(
@@ -33,10 +36,14 @@ fun AppNavigation(
         }
 
         composable<Home> {
-            TopBarScreen { paddingValues ->
+            TopBarScreen(
+                onFABClick = {
+                    navController.navigate(TaskAdd)
+                }
+            ) { paddingValues ->
                 HomeScreen(
                     paddingValues = paddingValues,
-                    onTaskClick = { selectedTask ->
+                    onNavigateToDetail = { selectedTask ->
                         navController.navigate(selectedTask)
                     }
                 )
@@ -48,6 +55,34 @@ fun AppNavigation(
             MainScreen { paddingValues ->
                 TaskDetailScreen(
                     task = selectedTask,
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    },
+                    onNavigateToEdit = { taskEdit ->
+                        navController.navigate(taskEdit)
+                    },
+                    paddingValues = paddingValues
+                )
+            }
+        }
+
+        composable<TaskAdd> {
+            MainScreen { paddingValues ->
+                TaskAddScreen(
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    },
+                    paddingValues = paddingValues
+                )
+            }
+        }
+
+        composable<TaskEdit> {
+            MainScreen { paddingValues ->
+                TaskEditScreen(
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    },
                     paddingValues = paddingValues
                 )
             }

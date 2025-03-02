@@ -29,7 +29,7 @@ import br.com.matheusjuan.todolist.ui.theme.Typography
 fun HomeScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    onTaskClick: (Task) -> Unit
+    onNavigateToDetail: (Task) -> Unit
 ) {
 
     val tasks: List<Task> = mockTasks
@@ -66,7 +66,7 @@ fun HomeScreen(
                 modifier = Modifier.padding(bottom = 12.dp),
                 tasks = tasks,
                 onTaskClick = { selectedTask ->
-                    onTaskClick(selectedTask)
+                    onNavigateToDetail(selectedTask)
                 }
             )
         }
@@ -133,6 +133,6 @@ fun HeaderList(
 private fun HomeScreenListPreview() {
     HomeScreen(
         paddingValues = PaddingValues(),
-        onTaskClick = { }
+        onNavigateToDetail = { }
     )
 }

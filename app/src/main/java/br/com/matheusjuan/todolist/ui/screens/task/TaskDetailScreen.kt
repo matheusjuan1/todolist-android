@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.data.model.Task
+import br.com.matheusjuan.todolist.data.model.TaskEdit
 import br.com.matheusjuan.todolist.data.model.mock.mockTasks
 import br.com.matheusjuan.todolist.ui.components.button.TodoButton
 import br.com.matheusjuan.todolist.ui.components.checkbox.TodoCheckbox
@@ -33,11 +34,14 @@ import br.com.matheusjuan.todolist.ui.theme.GreenBase
 import br.com.matheusjuan.todolist.ui.theme.RedBase
 import br.com.matheusjuan.todolist.ui.theme.Typography
 import br.com.matheusjuan.todolist.ui.util.formatServiceDateTime
+import br.com.matheusjuan.todolist.ui.util.toTaskEdit
 
 @Composable
 fun TaskDetailScreen(
     modifier: Modifier = Modifier,
     task: Task,
+    onNavigateBack: () -> Unit,
+    onNavigateToEdit: (TaskEdit) -> Unit,
     paddingValues: PaddingValues
 ) {
     Box(
@@ -52,7 +56,7 @@ fun TaskDetailScreen(
         ) {
             TodoButton(
                 iconRes = R.drawable.ic_arrow_left,
-                onClick = { }
+                onClick = onNavigateBack
             )
 
             TaskDetail(task = task)
@@ -60,7 +64,10 @@ fun TaskDetailScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             TaskButtons(
-                onEdit = { },
+                onEdit = {
+                    val taskEdit = task.toTaskEdit()
+                    onNavigateToEdit(taskEdit)
+                },
                 onDelete = { }
             )
         }
@@ -201,6 +208,8 @@ fun TaskButtons(
 private fun TaskDetailScreenPreview() {
     TaskDetailScreen(
         task = mockTasks.first(),
+        onNavigateBack = { },
+        onNavigateToEdit = { },
         paddingValues = PaddingValues()
     )
 }

@@ -3,6 +3,8 @@ package br.com.matheusjuan.todolist.ui.util
 import android.content.Context
 import androidx.compose.ui.graphics.Color
 import br.com.matheusjuan.todolist.R
+import br.com.matheusjuan.todolist.data.model.Task
+import br.com.matheusjuan.todolist.data.model.TaskEdit
 import br.com.matheusjuan.todolist.ui.util.enums.Priority
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -37,4 +39,16 @@ fun Int.getPriorityInfo(context: Context): Pair<String, Color> {
         Priority.HIGH.value -> context.getString(R.string.high) to Priority.HIGH.color
         else -> context.getString(R.string.low) to Priority.LOW.color
     }
+}
+
+fun Task.toTaskEdit(): TaskEdit {
+    return TaskEdit(
+        id = this.id,
+        title = this.title,
+        description = this.description,
+        startAt = this.startAt,
+        endAt = this.endAt,
+        priority = this.priority,
+        done = this.done
+    )
 }

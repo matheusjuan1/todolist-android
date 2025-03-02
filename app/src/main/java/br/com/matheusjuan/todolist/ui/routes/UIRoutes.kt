@@ -7,3 +7,6 @@ data object Splash
 
 @Serializable
 data object Home
+
+@Serializable
+data object TaskAdd
