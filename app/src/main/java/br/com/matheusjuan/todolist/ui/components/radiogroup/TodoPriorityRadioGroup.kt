@@ -25,6 +25,7 @@ import br.com.matheusjuan.todolist.ui.util.getPriorityInfo
 @Composable
 fun TodoPriorityRadioGroup(
     selectedPriority: Int,
+    enabled: Boolean = true,
     onPrioritySelected: (Int) -> Unit
 ) {
     val options = listOf(Priority.LOW.value, Priority.MEDIUM.value, Priority.HIGH.value)
@@ -49,7 +50,7 @@ fun TodoPriorityRadioGroup(
                         if (isSelected) color.copy(alpha = 0.2f)
                         else Gray200
                     )
-                    .clickable { onPrioritySelected(priority) },
+                    .clickable(enabled = enabled) { onPrioritySelected(priority) },
                 contentAlignment = Alignment.Center
             ) {
                 Text(
