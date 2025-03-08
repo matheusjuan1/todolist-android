@@ -49,7 +49,7 @@ fun TaskEditScreen(
             }
 
             TodoTaskForm(
-                modifier = Modifier.padding(top = 28.dp)
+                modifier = Modifier.padding(top = 24.dp)
             )
         }
     }
