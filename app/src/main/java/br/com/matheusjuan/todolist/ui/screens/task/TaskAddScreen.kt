@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.ui.components.button.TodoButton
+import br.com.matheusjuan.todolist.ui.components.task.TodoTaskForm
 import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
@@ -46,6 +47,10 @@ fun TaskAddScreen(
                     style = Typography.headlineLarge
                 )
             }
+
+            TodoTaskForm(
+                modifier = Modifier.padding(top = 28.dp)
+            )
         }
     }
 }
