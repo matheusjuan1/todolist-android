@@ -165,7 +165,8 @@ fun TaskDetail(
                 style = Typography.titleLarge
             )
             TodoPriorityRadioGroup(
-                selectedPriority = task.priority
+                selectedPriority = task.priority,
+                enabled = false
             ) { }
         }
 
