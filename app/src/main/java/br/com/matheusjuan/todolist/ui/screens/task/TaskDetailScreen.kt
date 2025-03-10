@@ -38,14 +38,13 @@ import br.com.matheusjuan.todolist.ui.util.toTaskEdit
 
 @Composable
 fun TaskDetailScreen(
-    modifier: Modifier = Modifier,
     task: Task,
     onNavigateBack: () -> Unit,
     onNavigateToEdit: (TaskEdit) -> Unit,
     paddingValues: PaddingValues
 ) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(paddingValues)
