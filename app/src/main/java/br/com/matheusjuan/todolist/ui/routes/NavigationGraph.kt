@@ -10,6 +10,8 @@ import br.com.matheusjuan.todolist.data.model.Task
 import br.com.matheusjuan.todolist.data.model.TaskEdit
 import br.com.matheusjuan.todolist.ui.common.MainScreen
 import br.com.matheusjuan.todolist.ui.common.TopBarScreen
+import br.com.matheusjuan.todolist.ui.screens.auth.LoginScreen
+import br.com.matheusjuan.todolist.ui.screens.auth.RegisterScreen
 import br.com.matheusjuan.todolist.ui.screens.home.HomeScreen
 import br.com.matheusjuan.todolist.ui.screens.splash.SplashScreen
 import br.com.matheusjuan.todolist.ui.screens.task.TaskAddScreen
@@ -29,8 +31,30 @@ fun AppNavigation(
                 SplashScreen(
                     paddingValues = paddingValues,
                     onNavigateToNextScreen = {
+                        navController.navigate(Login)
+                    }
+                )
+            }
+        }
+
+        composable<Login> {
+            MainScreen { paddingValues ->
+                LoginScreen(
+                    paddingValues = paddingValues,
+                    onNavigateToRegister = {
+                        navController.navigate(Register)
+                    },
+                    onLogin = {
                         navController.navigate(Home)
                     }
+                )
+            }
+        }
+
+        composable<Register> {
+            MainScreen { paddingValues ->
+                RegisterScreen(
+                    paddingValues = paddingValues
                 )
             }
         }
