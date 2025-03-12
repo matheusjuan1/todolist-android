@@ -31,7 +31,11 @@ fun AppNavigation(
                 SplashScreen(
                     paddingValues = paddingValues,
                     onNavigateToNextScreen = {
-                        navController.navigate(Login)
+                        navController.navigate(Login) {
+                            popUpTo<Splash> {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
@@ -42,10 +46,18 @@ fun AppNavigation(
                 LoginScreen(
                     paddingValues = paddingValues,
                     onNavigateToRegister = {
-                        navController.navigate(Register)
+                        navController.navigate(Register) {
+                            popUpTo<Login> {
+                                inclusive = true
+                            }
+                        }
                     },
                     onLogin = {
-                        navController.navigate(Home)
+                        navController.navigate(Home) {
+                            popUpTo<Login> {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
@@ -54,7 +66,21 @@ fun AppNavigation(
         composable<Register> {
             MainScreen { paddingValues ->
                 RegisterScreen(
-                    paddingValues = paddingValues
+                    paddingValues = paddingValues,
+                    onNavigateToLogin = {
+                        navController.navigate(Login) {
+                            popUpTo<Register> {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    onRegister = {
+                        navController.navigate(Home) {
+                            popUpTo<Register> {
+                                inclusive = true
+                            }
+                        }
+                    }
                 )
             }
         }
