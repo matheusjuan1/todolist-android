@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,12 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.matheusjuan.todolist.R
 import br.com.matheusjuan.todolist.ui.theme.BlueBase
 import br.com.matheusjuan.todolist.ui.theme.Gray400
 import br.com.matheusjuan.todolist.ui.theme.Gray600
@@ -51,6 +56,7 @@ fun TodoTextField(
 
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
+    var passwordVisible by remember { mutableStateOf(false) }
 
     Column {
         OutlinedTextField(
@@ -76,7 +82,26 @@ fun TodoTextField(
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = inputType.keyboardType),
-            visualTransformation = inputType.visualTransformation
+            visualTransformation =
+            if (inputType == InputType.PASSWORD && passwordVisible) VisualTransformation.None
+            else inputType.visualTransformation,
+            trailingIcon = {
+                if (inputType == InputType.PASSWORD) {
+                    IconButton(
+                        onClick = { passwordVisible = !passwordVisible }
+                    ) {
+                        Icon(
+                            painter =
+                            if (passwordVisible) painterResource(R.drawable.ic_eye)
+                            else painterResource(R.drawable.ic_eye_off),
+                            contentDescription =
+                            if (passwordVisible) stringResource(R.string.hide_password)
+                            else stringResource(R.string.show_password),
+                            tint = Gray400
+                        )
+                    }
+                }
+            }
         )
         Row(
             modifier = Modifier

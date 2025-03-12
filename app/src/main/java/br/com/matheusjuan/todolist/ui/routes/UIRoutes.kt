@@ -10,3 +10,9 @@ data object Home
 
 @Serializable
 data object TaskAdd
+
+@Serializable
+data object Login
+
+@Serializable
+data object Register

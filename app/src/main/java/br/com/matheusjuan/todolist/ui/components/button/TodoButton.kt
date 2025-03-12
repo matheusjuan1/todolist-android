@@ -31,6 +31,7 @@ fun TodoButton(
     text: String? = null,
     @DrawableRes iconRes: Int? = null,
     color: Color = BlueBase,
+    textColor: Color = Color.White,
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {
@@ -62,7 +63,7 @@ fun TodoButton(
                 Text(
                     text = text,
                     style = Typography.labelLarge,
-                    color = if (enabled) Color.White else Gray400
+                    color = if (enabled) textColor else Gray400
                 )
             }
         }

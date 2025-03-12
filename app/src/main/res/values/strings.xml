@@ -22,4 +22,13 @@
     <string name="priority">Prioridade</string>
     <string name="edit">Editar</string>
     <string name="title">Título</string>
+    <string name="task_manager">Gerenciador de Tarefas</string>
+    <string name="username">Username</string>
+    <string name="password">Senha</string>
+    <string name="login">Entrar</string>
+    <string name="register">Cadastre-se</string>
+    <string name="name">Nome</string>
+    <string name="confirm_password">Confirmar a senha</string>
+    <string name="hide_password">Ocultar senha</string>
+    <string name="show_password">Mostrar senha</string>
 </resources>

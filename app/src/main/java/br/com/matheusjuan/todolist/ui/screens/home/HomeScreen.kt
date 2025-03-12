@@ -27,7 +27,6 @@ import br.com.matheusjuan.todolist.ui.theme.Typography
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
     onNavigateToDetail: (Task) -> Unit
 ) {
@@ -35,7 +34,7 @@ fun HomeScreen(
     val tasks: List<Task> = mockTasks
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
             .background(color = Color.White)

@@ -22,7 +22,6 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
     onNavigateToNextScreen: () -> Unit
 ) {
@@ -32,8 +31,8 @@ fun SplashScreen(
     }
 
     Box(
-        modifier = modifier
-            .background(BlueBase)
+        modifier = Modifier
+            .background(color = BlueBase)
             .fillMaxSize()
             .padding(paddingValues)
     ) {

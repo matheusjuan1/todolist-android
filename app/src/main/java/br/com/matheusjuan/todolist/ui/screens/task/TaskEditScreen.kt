@@ -29,7 +29,6 @@ import br.com.matheusjuan.todolist.ui.util.enums.Priority
 
 @Composable
 fun TaskEditScreen(
-    modifier: Modifier = Modifier,
     onNavigateBack: () -> Unit,
     paddingValues: PaddingValues
 ) {
@@ -47,7 +46,7 @@ fun TaskEditScreen(
     )
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(paddingValues)
