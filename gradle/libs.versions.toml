@@ -11,6 +11,7 @@ composeBom = "2024.04.01"
 navigation = "2.8.3"
 kotlinSerialization = "1.7.3"
 room = "2.6.1"
+ktorBom = "3.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,10 +34,25 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref =  "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
+ktor-bom = { group = "io.ktor", name = "ktor-bom", version.ref = "ktorBom" }
+ktor-client-android = { group = "io.ktor", name = "ktor-client-android" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging" }
+ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization" }
+ktor-client-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "1.9.21-1.0.15" }
+
+[bundles]
+ktor = [
+    "ktor-client-android",
+    "ktor-client-content-negotiation",
+    "ktor-client-logging",
+    "ktor-client-serialization",
+    "ktor-client-serialization-json"
+]
 

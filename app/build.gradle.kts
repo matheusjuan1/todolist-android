@@ -49,6 +49,9 @@ dependencies {
     ksp(libs.room.compiler)
     implementation(libs.room.paging)
 
+    implementation(platform(libs.ktor.bom))
+    implementation(libs.bundles.ktor)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
